@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja | Eleveon Gym</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="assets/logo-circulo-eleveon.png">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Scroll Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image-area">
+                    <i class="fas fa-dumbbell" id="modalIcon"></i>
+                </div>
+                <div class="modal-info">
+                    <span class="modal-category" id="modalCategory">Categoria</span>
+                    <h2 id="modalName">Nome do Produto</h2>
+                    <p id="modalDesc">Descrição do produto</p>
+                    <div class="modal-price" id="modalPrice">R$ 0,00</div>
+                    <button class="modal-btn">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="header-wrapper">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">ELEVEON</span>
+                    <span class="logo-sub">GYM</span>
+                </div>
+            </a>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-menu">
+                    <li><a href="index.html#hero" class="nav-link">Início</a></li>
+                    <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="index.html#aparelhos" class="nav-link">Aparelhos</a></li>
+                    <li><a href="index.html#aulas" class="nav-link">Aulas</a></li>
+                    <li><a href="index.html#planos" class="nav-link">Planos</a></li>
+                    <li><a href="loja.html" class="nav-link active">Loja</a></li>
+                    <li><a href="index.html#horarios" class="nav-link">Horários</a></li>
+                    <li><a href="matricula.html" class="nav-link nav-cta">Matrícula</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero-section">
+        <div class="page-hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="container">
+            <div class="page-hero-content">
+                <div class="page-hero-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Eleveon Gym</span>
+                </div>
+                <h1 class="page-hero-title">Nossa <span class="accent">Loja</span></h1>
+                <p class="page-hero-text">Encontre os melhores produtos fitness para complementar seus treinos. Suplementos, roupas e acessórios de alta qualidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Loja Online</span>
+                <h2 class="section-title">Nossos Produtos</h2>
+            </div>
+            
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="suplementos">Suplementos</button>
+                <button class="filter-btn" data-filter="roupas">Roupas Fitness</button>
+                <button class="filter-btn" data-filter="acessorios">Acessórios</button>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-category="suplementos" data-name="Whey Protein Premium" data-desc="Protein isolado de alta qualidade. 25g de proteína por porção. Sabor chocolate." data-price="R$ 129,90" data-icon="fa-flask" data-cat="Suplementos">
+                    <div class="product-image">
+                        <i class="fas fa-flask"></i>
+                        <span class="product-badge">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <h4>Whey Protein</h4>
+                        <p>Premium Quality</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 129,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="suplementos" data-name="Pré-Treino Extreme" data-desc="Fórmula avançada com cafeína e taurina. Energia extrema para seus treinos." data-price="R$ 89,90" data-icon="fa-bolt" data-cat="Suplementos">
+                    <div class="product-image">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Pré-Treino</h4>
+                        <p>Extreme Energy</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 89,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="suplementos" data-name="Creatina Monohidratada" data-desc="Creatina pura para aumento de força e potência muscular." data-price="R$ 69,90" data-icon="fa-pills" data-cat="Suplementos">
+                    <div class="product-image">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Creatina</h4>
+                        <p>Força & Potência</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 69,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="suplementos" data-name="BCAA 2:1:1" data-desc="Aminoácidos de cadeia ramificada para recuperação muscular." data-price="R$ 79,90" data-icon="fa-vial" data-cat="Suplementos">
+                    <div class="product-image">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>BCAA</h4>
+                        <p>Recuperação</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 79,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="suplementos" data-name="Omega 3 Premium" data-desc="Ácidos graxos essenciais para saúde cardiovascular." data-price="R$ 59,90" data-icon="fa-capsules" data-cat="Suplementos">
+                    <div class="product-image">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Omega 3</h4>
+                        <p>Saúde Cardiovascular</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 59,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="roupas" data-name="Camiseta Dry Fit" data-desc="Tecnologia dry fit. Tecido leve e respirável para seus treinos." data-price="R$ 59,90" data-icon="fa-shirt" data-cat="Roupas">
+                    <div class="product-image">
+                        <i class="fas fa-shirt"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Camiseta Dry</h4>
+                        <p>Conforto térmico</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 59,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="roupas" data-name="Legging High Compression" data-desc="Tecido de alta compressão. Ideal para exercícios intensos." data-price="R$ 89,90" data-icon="fa-user" data-cat="Roupas">
+                    <div class="product-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Legging Pro</h4>
+                        <p>High Compression</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 89,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="roupas" data-name="Shorts Performance" data-desc="Tecido técnico de secagem rápida. Ideal para qualquer modalidade." data-price="R$ 69,90" data-icon fa-running" data-cat="Roupas">
+                    <div class="product-image">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Shorts Pro</h4>
+                        <p>Performance</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 69,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios" data-name="Fones Bluetooth Sport" data-desc="Resistentes ao suor. 8 horas de bateria. Áudio de alta qualidade." data-price="R$ 149,90" data-icon="fa-headphones" data-cat="Acessórios">
+                    <div class="product-image">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Fones Sport</h4>
+                        <p>Wireless</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 149,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios" data-name="Kit Meias Sport" data-desc="Kit com 3 pares. Tecnologia anti-deslizamento." data-price="R$ 34,90" data-icon="fa-socks" data-cat="Acessórios">
+                    <div class="product-image">
+                        <i class="fas fa-socks"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Kit Meias</h4>
+                        <p>3 Pares</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 34,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios" data-name="Garrafa Térmica 1L" data-desc="Aço inoxidável. Mantém bebida gelada por 24h." data-price="R$ 49,90" data-icon="fa-bottle-water" data-cat="Acessórios">
+                    <div class="product-image">
+                        <i class="fas fa-bottle-water"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Garrafa 1L</h4>
+                        <p>Steel Térmica</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 49,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="acessorios" data-name="Luvas de Treino" data-desc="Palmilha acolchoada. Grip antiderrapante. Proteção completa." data-price="R$ 44,90" data-icon="fa-hand-paper" data-cat="Acessórios">
+                    <div class="product-image">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <div class="product-info">
+                        <h4>Luvas Pro</h4>
+                        <p>Proteção Total</p>
+                        <div class="product-bottom">
+                            <span class="product-price">R$ 44,90</span>
+                            <button class="product-btn">Ver produto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="brands-wrapper">
+                <h4 class="brands-title">Marcas Parceiras</h4>
+                <div class="brands-grid">
+                    <div class="brand-item">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="brand-item">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <div class="brand-item">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="brand-item">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="brand-item">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="brand-item">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">ELEVEON</span>
+                            <span class="logo-sub">GYM</span>
+                        </div>
+                    </a>
+                    <p>Transformando vidas através do fitness desde 2009. Sua melhor versão está aqui.</p>
+                </div>
+                <div class="footer-links">
+                    <h5>Links Rápidos</h5>
+                    <ul>
+                        <li><a href="index.html#hero">Início</a></li>
+                        <li><a href="index.html#planos">Planos</a></li>
+                        <li><a href="loja.html">Loja</a></li>
+                        <li><a href="matricula.html">Matrícula</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h5>Sigam-nos</h5>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Eleveon Gym. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
