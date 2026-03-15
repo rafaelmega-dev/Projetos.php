@@ -251,6 +251,13 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.modal-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .modal-image-area i {
@@ -1067,14 +1074,14 @@ h1, h2, h3, h4, h5, h6 {
 .class-content h4 {
     font-size: 1.3rem;
     margin-bottom: 12px;
-    color: white;
+    color: var(--light);
 }
 
 .class-content p {
-    color: lightgrey;
+    color: var(--gray);
     font-size: 0.9rem;
     margin-bottom: 15px;
-    background: rgba(0,0,0,0.75);
+    background: var(--dark-2);
     backdrop-filter: blur(4px);
     border-radius: 16px; /* aqui arredonda o retângulo */
     padding: 20px; /* espaço entre texto e borda */
@@ -1240,6 +1247,7 @@ h1, h2, h3, h4, h5, h6 {
 .products-section {
     padding: 100px 0;
     background: var(--dark-2);
+    
 }
 
 .product-filters {
@@ -1378,13 +1386,97 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--dark-3);
 }
 
-.chart-container {
+/* Gym Hours Info */
+.gym-hours-info {
     max-width: 900px;
-    margin: 0 auto;
-    padding: 40px;
+    margin: 0 auto 50px;
+}
+
+.hours-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 30px;
     background: var(--dark-2);
     border-radius: 20px;
     border: 1px solid var(--dark-4);
+}
+
+.hours-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.hours-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--light);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+}
+
+.hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--dark-3);
+    border-radius: 10px;
+}
+
+.hours-item .day {
+    font-weight: 500;
+    color: var(--light-2);
+    padding-right: 70px;
+}
+
+.hours-item .time {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.hours-item .time.closed {
+    color: #FF6B6B;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.chart-container {
+    padding: 30px;
+    background: var(--dark-2);
+    border-radius: 20px;
+    border: 1px solid var(--dark-4);
+}
+
+.chart-day-title {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--light);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .chart-title {
@@ -1397,9 +1489,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    height: 250px;
-    gap: 15px;
-    padding-bottom: 50px;
+    height: 180px;
+    gap: 8px;
+    padding-bottom: 40px;
     border-bottom: 2px solid var(--dark-4);
 }
 
@@ -1414,8 +1506,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .chart-bar {
     width: 100%;
-    max-width: 60px;
-    border-radius: 8px 8px 0 0;
+    max-width: 40px;
+    border-radius: 6px 6px 0 0;
     position: relative;
     transition: height 1s ease;
 }
@@ -1435,17 +1527,17 @@ h1, h2, h3, h4, h5, h6 {
 .chart-bar::after {
     content: attr(data-value);
     position: absolute;
-    top: -30px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: var(--light);
 }
 
 .chart-label {
-    margin-top: 15px;
-    font-size: 0.85rem;
+    margin-top: 12px;
+    font-size: 0.7rem;
     color: var(--gray);
     font-weight: 500;
 }
@@ -1453,8 +1545,8 @@ h1, h2, h3, h4, h5, h6 {
 .chart-legend {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
+    gap: 30px;
+    margin-top: 20px;
 }
 
 .legend-item {
@@ -1462,7 +1554,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 8px;
     color: var(--gray);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .legend-dot {
@@ -1481,6 +1573,49 @@ h1, h2, h3, h4, h5, h6 {
 
 .legend-dot.high {
     background: #FF6B6B;
+}
+
+/* Responsive for charts grid */
+@media (max-width: 900px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hours-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hours-icon {
+        margin: 0 auto;
+    }
+    
+    .hours-item {
+        flex-direction: column;
+        gap: 5px;
+        padding-left: 5px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-bars {
+        height: 150px;
+        gap: 4px;
+    }
+    
+    .chart-bar {
+        max-width: 25px;
+    }
+    
+    .chart-bar::after {
+        font-size: 0.6rem;
+        top: -20px;
+    }
+    
+    .chart-label {
+        font-size: 0.6rem;
+    }
 }
 
 /* ========================================
@@ -1755,7 +1890,7 @@ h1, h2, h3, h4, h5, h6 {
    ======================================== */
 .main-footer {
     background: var(--dark-3);
-    padding: 60px 0 25px;
+    padding: 0px 0 25px;
     border-top: 1px solid var(--dark-4);
 }
 
@@ -1838,8 +1973,9 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 60vh;
+    z-index: 10;
 }
-
 .page-hero-shapes {
     position: absolute;
     inset: 0;
@@ -1854,12 +1990,11 @@ h1, h2, h3, h4, h5, h6 {
 .page-hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    
     background: rgba(0, 255, 135, 0.1);
     border: 1px solid var(--primary);
     padding: 10px 20px;
     border-radius: 30px;
-    margin-bottom: 25px;
     color: var(--primary);
     font-size: 0.8rem;
     font-weight: 600;
@@ -1869,7 +2004,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-hero-title {
     font-size: 3.5rem;
-    margin-bottom: 15px;
 }
 
 .page-hero-title .accent {
@@ -2144,6 +2278,13 @@ h1, h2, h3, h4, h5, h6 {
     .hero-stats {
         flex-direction: column;
         gap: 20px;
+        padding-bottom: 30px;
+    }
+    
+    .stat-item {
+        padding: 15px 10px;
+        background: rgba(0, 255, 135, 0.05);
+        border-radius: 10px;
     }
     
     .page-hero-title {
@@ -2261,7 +2402,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .carousel-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -2289,10 +2430,11 @@ h1, h2, h3, h4, h5, h6 {
    PARTNER BRANDS SECTION
    ======================================== */
 .brands-section {
-    padding: 40px 0;
+    padding: 35px 0;
     background: var(--dark-2);
     border-top: 1px solid var(--dark-4);
     border-bottom: 1px solid var(--dark-4);
+    margin-bottom: 60px
 }
 
 .brands-wrapper {
@@ -2371,4 +2513,56 @@ h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
         border-radius: 8px;
     }
+}
+.class-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+}
+
+.main-footer {
+    margin-top: auto;
+}
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.brand-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
