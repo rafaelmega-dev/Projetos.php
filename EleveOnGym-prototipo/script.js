@@ -174,41 +174,128 @@ function initScrollTop() {
     });
 }
 
-// Traffic Chart - Bar Chart
+// Traffic Chart - Bar Chart (7 charts for each day of the week)
 function initTrafficChart() {
-    const container = document.getElementById('gymChart');
+    const container = document.getElementById('gymCharts');
     if (!container) return;
 
-    const data = [
-        { time: '06:00', value: 20, label: '6h' },
-        { time: '08:00', value: 65, label: '8h' },
-        { time: '10:00', value: 35, label: '10h' },
-        { time: '14:00', value: 45, label: '14h' },
-        { time: '18:00', value: 95, label: '18h' },
-        { time: '20:00', value: 80, label: '20h' },
-        { time: '22:00', value: 40, label: '22h' }
-    ];
+    // Data for each day of the week - different occupancy patterns
+    const weekData = {
+        monday: [
+            { label: '6h', value: 25 },
+            { label: '8h', value: 70 },
+            { label: '10h', value: 40 },
+            { label: '14h', value: 50 },
+            { label: '18h', value: 95 },
+            { label: '20h', value: 85 },
+            { label: '22h', value: 45 }
+        ],
+        tuesday: [
+            { label: '6h', value: 30 },
+            { label: '8h', value: 75 },
+            { label: '10h', value: 45 },
+            { label: '14h', value: 55 },
+            { label: '18h', value: 90 },
+            { label: '20h', value: 80 },
+            { label: '22h', value: 40 }
+        ],
+        wednesday: [
+            { label: '6h', value: 28 },
+            { label: '8h', value: 72 },
+            { label: '10h', value: 42 },
+            { label: '14h', value: 52 },
+            { label: '18h', value: 92 },
+            { label: '20h', value: 82 },
+            { label: '22h', value: 42 }
+        ],
+        thursday: [
+            { label: '6h', value: 32 },
+            { label: '8h', value: 78 },
+            { label: '10h', value: 48 },
+            { label: '14h', value: 58 },
+            { label: '18h', value: 88 },
+            { label: '20h', value: 78 },
+            { label: '22h', value: 38 }
+        ],
+        friday: [
+            { label: '6h', value: 22 },
+            { label: '8h', value: 65 },
+            { label: '10h', value: 35 },
+            { label: '14h', value: 45 },
+            { label: '18h', value: 85 },
+            { label: '20h', value: 75 },
+            { label: '22h', value: 55 }
+        ],
+        saturday: [
+            { label: '7h', value: 60 },
+            { label: '8h', value: 80 },
+            { label: '9h', value: 70 },
+            { label: '10h', value: 55 },
+            { label: '11h', value: 30 },
+            { label: '', value: 0 },
+            { label: '', value: 0 }
+        ]
+    };
 
-    let html = '<h3 class="chart-title">Movimentação da Academia ao Longo do Dia</h3><div class="chart-bars">';
+    const dayNames = {
+        monday: 'Segunda-feira',
+        tuesday: 'Terça-feira',
+        wednesday: 'Quarta-feira',
+        thursday: 'Quinta-feira',
+        friday: 'Sexta-feira',
+        saturday: 'Sábado',
+        sunday: 'Domingo'
+    };
 
-    data.forEach(item => {
-        let levelClass = 'low';
-        if (item.value >= 70) levelClass = 'high';
-        else if (item.value >= 40) levelClass = 'medium';
+    let html = '';
 
-        html += '<div class="chart-bar-container"><div class="chart-bar ' + levelClass + '" style="height: 0%" data-height="' + item.value + '" data-value="' + item.value + '%"></div><span class="chart-label">' + item.label + '</span></div>';
+    // Generate a chart for each day
+    Object.keys(weekData).forEach((day, dayIndex) => {
+        const data = weekData[day];
+        
+        html += '<div class="chart-container">';
+        html += '<h3 class="chart-day-title">' + dayNames[day] + '</h3>';
+        html += '<div class="chart-bars">';
+
+        data.forEach(item => {
+            let levelClass = 'low';
+            if (item.value >= 70) levelClass = 'high';
+            else if (item.value >= 40) levelClass = 'medium';
+
+            // Handle closed days (Sunday)
+            const barStyle = item.value === 0 ? 'background: var(--dark-4);' : '';
+            const displayValue = item.label === '' || item.value === 0 ? '0%' : item.value + '%';
+            const heightValue = item.value === 0 ? '5%' : item.value + '%';
+
+            html += '<div class="chart-bar-container">';
+            html += '<div class="chart-bar ' + levelClass + '" style="height: 0%; ' + barStyle + '" data-height="' + heightValue + '" data-value="' + displayValue + '"></div>';
+            html += '<span class="chart-label">' + item.label + '</span>';
+            html += '</div>';
+        });
+
+        html += '</div>';
+        
+        // Only show legend on the first chart
+        if (dayIndex === 0) {
+            html += '<div class="chart-legend">';
+            html += '<div class="legend-item"><span class="legend-dot low"></span><span>Tranquilo</span></div>';
+            html += '<div class="legend-item"><span class="legend-dot medium"></span><span>Moderado</span></div>';
+            html += '<div class="legend-item"><span class="legend-dot high"></span><span>Movimentado</span></div>';
+            html += '</div>';
+        }
+        
+        html += '</div>';
     });
-
-    html += '</div><div class="chart-legend"><div class="legend-item"><span class="legend-dot low"></span><span>Tranquilo</span></div><div class="legend-item"><span class="legend-dot medium"></span><span>Moderado</span></div><div class="legend-item"><span class="legend-dot high"></span><span>Movimentado</span></div></div>';
 
     container.innerHTML = html;
 
+    // Animate all charts
     setTimeout(() => {
-        const bars = container.querySelectorAll('.chart-bar');
-        bars.forEach((bar, index) => {
+        const allBars = container.querySelectorAll('.chart-bar');
+        allBars.forEach((bar, index) => {
             setTimeout(() => {
-                bar.style.height = bar.dataset.height + '%';
-            }, index * 100);
+                bar.style.height = bar.dataset.height;
+            }, index * 50);
         });
     }, 300);
 }
@@ -295,14 +382,36 @@ function initProductModal() {
         const price = card.dataset.price || 'R$ 0,00';
         const icon = card.dataset.icon || 'fa-box';
         const category = card.dataset.cat || 'Produto';
+        const image = card.dataset.image || '';
 
         document.getElementById('modalName').textContent = name;
         document.getElementById('modalDesc').textContent = desc;
         document.getElementById('modalPrice').textContent = price;
         document.getElementById('modalCategory').textContent = category;
         
+        const modalImageArea = document.querySelector('.modal-image-area');
         const modalIcon = document.getElementById('modalIcon');
-        modalIcon.className = 'fas ' + icon;
+        
+        // Handle product image in modal
+        if (image) {
+            // Check if image already exists
+            let modalImg = modalImageArea.querySelector('img');
+            if (!modalImg) {
+                modalImg = document.createElement('img');
+                modalImageArea.appendChild(modalImg);
+            }
+            modalImg.src = image;
+            modalImg.style.display = 'block';
+            modalIcon.style.display = 'none';
+        } else {
+            // No image, show icon
+            const modalImg = modalImageArea.querySelector('img');
+            if (modalImg) {
+                modalImg.style.display = 'none';
+            }
+            modalIcon.className = 'fas ' + icon;
+            modalIcon.style.display = 'block';
+        }
 
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
