@@ -1210,3 +1210,48 @@ body.js-loaded .revealed {
 @media (min-width: 769px) {
   .nav__list { display: flex !important; position: static !important; box-shadow: none !important; padding: 0 !important; height: auto !important; }
 }
+/* Container principal */
+.about__image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* Moldura */
+.about__image-frame {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Área rosa */
+.about__image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* mantém quadrado responsivo */
+    background: #e6bcc6; /* rosa */
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Container interno */
+.about__img-inner {
+    width: 85%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEM */
+.about__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* não corta o logo */
+    display: block;
+    border-radius: 30px;
+}

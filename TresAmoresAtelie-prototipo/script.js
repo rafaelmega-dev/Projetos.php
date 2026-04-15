@@ -8,13 +8,13 @@
 
   const WA_NUMBER = '5500000000000';
 
-  const galleryData = [
-    { emoji: '🎂', title: 'Rose Birthday Cake',   desc: 'Vanilla sponge with rose buttercream and fresh florals.',  bg: 'linear-gradient(135deg,#fce4ec,#f48fb1)' },
-    { emoji: '🍫', title: 'Chocolate Collection', desc: 'Handmade Belgian chocolate truffles, 12 varieties.',       bg: 'linear-gradient(135deg,#fff3e0,#ffcc80)' },
-    { emoji: '💍', title: 'Wedding Tier Cake',     desc: 'Three-tier white fondant with gold leaf details.',         bg: 'linear-gradient(135deg,#e8eaf6,#9fa8da)' },
-    { emoji: '🌿', title: 'Garden Party Table',    desc: 'Curated dessert table for an outdoor celebration.',        bg: 'linear-gradient(135deg,#e0f2f1,#80cbc4)' },
-    { emoji: '🌸', title: 'Spring Petit Fours',    desc: 'Delicate almond petit fours in pastel shades.',            bg: 'linear-gradient(135deg,#fce4ec,#f8bbd0)' },
-    { emoji: '🫐', title: 'Berry Tart Collection', desc: 'Seasonal berry tarts with crème pâtissière.',             bg: 'linear-gradient(135deg,#f3e5f5,#e1bee7)' },
+const galleryData = [
+    { emoji: '🎂', title: 'Bolo de Brigadeiro', desc: 'Nossos bolos artesanais de brigadeiro.', bg: 'linear-gradient(135deg,#fce4ec,#f48fb1)' },
+    { emoji: '🍫', title: 'Bolo de Prestígio', desc: 'Bolo de Prestígio com coco e chocolate.', bg: 'linear-gradient(135deg,#fff3e0,#ffcc80)' },
+    { emoji: '🥥', title: 'Bolo de Coco', desc: 'Bolo de coco cremoso.', bg: 'linear-gradient(135deg,#e8eaf6,#9fa8da)' },
+    { emoji: '🍋', title: 'Bolo de Limão', desc: 'Bolo leve de limão siciliano.', bg: 'linear-gradient(135deg,#e0f2f1,#80cbc4)' },
+    { emoji: '🍫', title: 'Bolo de Cenoura', desc: 'Cenoura com cobertura de chocolate.', bg: 'linear-gradient(135deg,#fce4ec,#f8bbd0)' },
+    { emoji: '🍰', title: 'Bolo de Chocolate', desc: 'Chocolate úmido com brigadeiro.', bg: 'linear-gradient(135deg,#f3e5f5,#e1bee7)' },
   ];
 
   const header          = document.getElementById('header');
@@ -132,7 +132,7 @@
   document.addEventListener('click', e => {
     const btn = e.target.closest('.btn--whatsapp');
     if (btn && btn.dataset.product) {
-      const msg = encodeURIComponent('Hello, I would like to order ' + btn.dataset.product + ' from the website.');
+      const msg = encodeURIComponent('Olá! Gostaria de encomendar ' + btn.dataset.product + ' do site.');
       window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
     }
   });
