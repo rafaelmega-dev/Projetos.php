@@ -312,8 +312,9 @@ body.js-loaded .revealed {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #fff5f8 0%, #fce4ec 40%, #fdf3e7 100%);
+  background: linear-gradient(160deg, rgba(255,245,248,0.55) 0%, rgba(252,228,236,0.55) 40%, rgba(253,243,231,0.55) 100%),
 }
+
 
 .hero__bg {
   position: absolute;
@@ -1032,16 +1033,6 @@ body.js-loaded .revealed {
   pointer-events: all;
 }
 
-.modal__content {
-  max-width: 600px;
-  width: 90%;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-xl);
-  transform: scale(0.95);
-  transition: transform var(--transition);
-}
 
 .modal.open .modal__content { transform: scale(1); }
 
@@ -1083,16 +1074,6 @@ body.js-loaded .revealed {
 .modal__nav:hover { background: rgba(255,255,255,0.3); }
 .modal__nav--prev { left: 20px; }
 .modal__nav--next { right: 20px; }
-
-.modal__slide {
-  aspect-ratio: 4/3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 40px;
-}
 
 .modal__slide span { font-size: 5rem; }
 
@@ -1254,4 +1235,73 @@ body.js-loaded .revealed {
     object-fit: contain; /* não corta o logo */
     display: block;
     border-radius: 30px;
+}
+.menu__card-img img,
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* preenche sem distorcer */
+  display: block;
+}
+.gallery__item img {
+  transition: transform 0.4s ease;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* escurece leve */
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.gallery__item:hover .gallery__overlay {
+  opacity: 1;
+}
+.menu__card-img {
+  height: 220px;
+  overflow: hidden;
+}
+
+.gallery__item {
+  overflow: hidden;
+}
+.modal__content {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  background: transparent;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.95);
+  transition: transform var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modal__slide img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-lg);
 }

@@ -9,13 +9,14 @@
   const WA_NUMBER = '5500000000000';
 
 const galleryData = [
-    { emoji: '🎂', title: 'Bolo de Brigadeiro', desc: 'Nossos bolos artesanais de brigadeiro.', bg: 'linear-gradient(135deg,#fce4ec,#f48fb1)' },
-    { emoji: '🍫', title: 'Bolo de Prestígio', desc: 'Bolo de Prestígio com coco e chocolate.', bg: 'linear-gradient(135deg,#fff3e0,#ffcc80)' },
-    { emoji: '🥥', title: 'Bolo de Coco', desc: 'Bolo de coco cremoso.', bg: 'linear-gradient(135deg,#e8eaf6,#9fa8da)' },
-    { emoji: '🍋', title: 'Bolo de Limão', desc: 'Bolo leve de limão siciliano.', bg: 'linear-gradient(135deg,#e0f2f1,#80cbc4)' },
-    { emoji: '🍫', title: 'Bolo de Cenoura', desc: 'Cenoura com cobertura de chocolate.', bg: 'linear-gradient(135deg,#fce4ec,#f8bbd0)' },
-    { emoji: '🍰', title: 'Bolo de Chocolate', desc: 'Chocolate úmido com brigadeiro.', bg: 'linear-gradient(135deg,#f3e5f5,#e1bee7)' },
-  ];
+  { img: 'assets/bolos.jpeg' },
+  { img: 'assets/bolo_prestigio.jpeg' },
+  { img: 'assets/bolo_4.jpeg' },
+  { img: 'assets/bolo_3.jpeg' },
+  { img: 'assets/bolo_2.jpeg' },
+  { img: 'assets/bolo_1.jpeg' },
+]
+
 
   const header          = document.getElementById('header');
   const navBurger       = document.getElementById('navBurger');
@@ -153,16 +154,14 @@ const galleryData = [
   }
 
   function renderModal() {
-    const item = galleryData[currentGalleryIndex];
-    if (!item || !modalContent) return;
-    modalContent.innerHTML =
-      '<div class="modal__slide" style="background:' + item.bg + '">' +
-        '<span>' + item.emoji + '</span>' +
-        '<h3>' + item.title + '</h3>' +
-        '<p>' + item.desc + '</p>' +
-      '</div>';
-  }
+  const item = galleryData[currentGalleryIndex];
+  if (!item || !modalContent) return;
 
+  modalContent.innerHTML =
+    '<div class="modal__slide">' +
+      '<img src="' + item.img + '" class="modal__img">' +
+    '</div>';
+}
   galleryItems.forEach(item => item.addEventListener('click', () => openModal(parseInt(item.dataset.index, 10))));
   if (modalClose)    modalClose.addEventListener('click', closeModal);
   if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
